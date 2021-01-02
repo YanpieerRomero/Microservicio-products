@@ -7,6 +7,6 @@ metadata:
 spec:
   containers:
     - name: products-service
-      image: image-products
+      image: microservicio-products
       ports:
         - containerPort: 8090

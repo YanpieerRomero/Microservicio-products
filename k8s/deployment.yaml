@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: products-service
-          image: products-service:v1
+          image: image-products
           ports:
             - containerPort: 8090

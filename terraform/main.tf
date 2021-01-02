@@ -1,10 +1,13 @@
+## defino el cloud provider
 provider "azurerm" {
   # whilst the `version` attribute is optional, we recommend pinning to a given version of the Provider
   features {}
 }
 data "azurerm_subscription" "current" {}
 
+## defino un grupo de recursos
 resource "azurerm_resource_group" "rgid" {
+  ## referencio al archivo locals.tf
   name     = "rg${local.alias}"
   location = local.region
 }
@@ -51,9 +54,13 @@ resource "azurerm_kubernetes_cluster" "aksid" {
     vnet_subnet_id = "/subscriptions/${data.azurerm_subscription.current.subscription_id}/resourceGroups/${azurerm_resource_group.rgid.name}/providers/Microsoft.Network/virtualNetworks/${azurerm_virtual_network.vnetid.name}/subnets/default"
   }
 
-  service_principal {
-    client_id     = local.clientid
-    client_secret = local.clientsecret
+  # service_principal {
+  #   client_id     = local.clientid
+  #   client_secret = local.clientsecret
+  # }
+
+  identity {
+    type = "SystemAssigned"
   }
 
   network_profile {

@@ -7,6 +7,6 @@ metadata:
 spec:
   containers:
     - name: products-container
-      image: products-image
+      image: yanpieer/products-image
       ports:
         - containerPort: 8090

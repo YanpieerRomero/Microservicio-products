@@ -1,11 +1,11 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: api-products-service
+  name: products-service
 spec:
   type: LoadBalancer
   selector:
-    app: products-service
+    app: products-app
   ports:
     - protocol: TCP
       port: 80

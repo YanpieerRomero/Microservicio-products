@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api-products-deployment
+  name: products-deployment
   labels:
-    app: products-service
+    app: products-app
 spec:
-  replicas: 5
+  replicas: 3
   selector:
     matchLabels:
-      app: products-service
+      app: products-app
   template:
     metadata:
-      name: api-products-pod
+      name: products-pod
       labels:
-        app: products-service
+        app: products-app
     spec:
       containers:
-        - name: products-service
-          image: microservicio-products
+        - name: products-container
+          image: products-image
           ports:
             - containerPort: 8090
